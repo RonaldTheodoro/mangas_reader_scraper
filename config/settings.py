@@ -8,6 +8,9 @@ from decouple import config
 class Config:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DEBUG = config('DEBUG', default=False, cast=bool)
+    # Database config
+    SQLITE_URL_DEFAULT = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+    DATABASE_URL = config('DATABASE_URL', default=SQLITE_URL_DEFAULT)
     # Betamax config
     CASSETTES_DIR = os.path.join(BASE_DIR, u'resources', u'cassettes')
     MATCH_REQUESTS_ON = [u'method', u'uri', u'path', u'query']
