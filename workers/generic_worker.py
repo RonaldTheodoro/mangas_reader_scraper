@@ -14,9 +14,15 @@ class GenericWorker:
     session = requests.session()
 
     def get_response(self, method, url, **kwargs):
-        response = self.session.request(method, url, **kwargs)
-        response.raise_for_status()
-        return response
+        try:
+            response = self.session.request(method, url, **kwargs)
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            logging.critical('An error happened during the request')
+        else:
+            return response
+
+        return None
 
     @staticmethod
     def manga_factory(url, title, is_complete):
