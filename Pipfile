@@ -12,6 +12,7 @@ betamax-serializers = "*"
 regex = "*"
 click = "*"
 python-decouple = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 rope = "*"
