@@ -17,3 +17,23 @@ class GenericWorker:
     def manga_factory(url, title, is_complete):
         manga = Manga(url, title, is_complete)
         return manga
+
+    def get_manga_list(self, save=False):
+
+        response = self.get_catalog()
+
+        mangas = self.parse_catalog(response)
+
+        if save:
+            mangas = self.save_mangas(mangas)
+
+        return mangas
+
+    def get_catalog(self):
+        raise NotImplementedError('This method must be implemented')
+
+    def parse_catalog(self, response):
+        raise NotImplementedError('This method must be implemented')
+
+    def save_mangas(self, mangas):
+        raise NotImplementedError('This method must be implemented')
