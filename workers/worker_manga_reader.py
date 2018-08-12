@@ -9,18 +9,18 @@ class WorkerMangaReader(GenericWorker):
     url_base = 'https://www.mangareader.net'
     url_manga_list = url_base + '/alphabetical'
 
-    def get_manga_list(self):
+    def get_catalog(self):
         response = self.get_response('GET', self.url_manga_list)
-        
+        return response
+
+    def parse_catalog(self, response):
         root = html.fromstring(response.text)
 
         mangas = root.xpath('//ul[@class="series_alpha"]/li')
 
         mangas = [self.create_manga_dict(manga) for manga in mangas]
 
-        print(len(mangas))
-
-        print(mangas[:5])
+        return mangas
 
     def create_manga_dict(self, manga_element):
         url = manga_element.xpath('./a/@href').pop()
