@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from models import create_tables, db_connect
 
 
-class Controller:
+class Controllers:
 
     def __init__(self):
         engine = db_connect()
