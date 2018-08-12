@@ -13,6 +13,7 @@ regex = "*"
 click = "*"
 python-decouple = "*"
 sqlalchemy = "*"
+alembic = "*"
 
 [dev-packages]
 rope = "*"
