@@ -1,7 +1,12 @@
+import logging
 from collections import namedtuple
 
 import requests
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format=' %(asctime)s - %(levelname)s - %(message)s'
+)
 
 Manga = namedtuple('Manga', ['url', 'title', 'is_complete'])
 
